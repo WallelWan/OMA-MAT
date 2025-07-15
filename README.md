@@ -19,6 +19,32 @@
 
 ## Online Map Association Benchmark and Framework
 
+Connecting online mapping with hybrid navigation to enable interpretable autonomous driving.
+
+<p align="center">
+  <img src="docs/intro.jpg"/>
+</p>
+
+**Key insights**:
+- We introduce Online Map Association (OMA), the first benchmark for hybrid navigation-oriented online map association.
+
+<p align="center">
+  <img src="docs/dataset.jpg"/>
+</p>
+
+- We introduce Association P-R, a metric for map association that considers the accuracy and precision of topological alignment.
+
+<p align="center">
+  <img src="docs/metric.jpg"/>
+</p>
+
+- We propose a Map Association Transformer (MAT), which utilizes path-aware attention and spatial attention mechanisms to enable understanding of geometric and topological correspondences.
+
+<p align="center">
+  <img src="docs/model.jpg"/>
+</p>
+
+
 ## News
 
 - 2025/07/15: First commit.
@@ -27,13 +53,41 @@
 
 ### Prepare Dataset
 
+```
+# Download the OMA dataset to the data/oma directory using the Huggingface CLI:
+# Note: The dataset is still in compliance review. We will open it as soon as possilble.
+
+huggingface-cli dataset download wanjiaxu/OMA --local-dir data/oma
+```
+
 ### Training
 
-### Evaluation
+```
+# By script (Recommended)
+# -p is default set as python and can be ignored
+sh scripts/train.sh -p python -d oma -c oma-mt-v1m1-l -n oma-mt-v1m1-l
+
+# Direct
+export PYTHONPATH=./
+python tools/train.py --config-file configs/oma/oma-mt-v1m1-l.py --options save_path=exp/oma/oma-mt-v1m1-l
+```
 
 ### Test
 
+```
+# By script (Based on experiment folder created by training script)
+# -p is default set as python and can be ignored
+# -w is default set as model_best and can be ignored
+sh scripts/test.sh -p python -d oma -n oma-mt-v1m1-l -w model_best
+
+# Direct
+export PYTHONPATH=./
+python tools/test.py --config-file configs/oma/oma-mt-v1m1-l.py --options save_path=exp/oma/oma-mt-v1m1-l weight=exp/oma/oma-mt-v1m1-l/model/model_best.pth
+```
+
 ## Model and Checkpoint
+
+Coming soon, Wait for data compliance review.
 
 ## Licence
 
@@ -48,7 +102,7 @@ The Readme is inspired by [DeepEyes](https://github.com/Visual-Agent/DeepEyes).
 
 ## TODO
 
-- [ ] Improved documentation and tutorials
+- [*] Improved documentation and tutorials
 - [ ] Open resource the post-process code.
 - [ ] Open resource the eval metric code.
 - [ ] Open resource the dataset in huggingface.
