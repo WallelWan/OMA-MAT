@@ -102,7 +102,7 @@ The Readme is inspired by [DeepEyes](https://github.com/Visual-Agent/DeepEyes).
 
 ## TODO
 
-- [*] Improved documentation and tutorials
+- [x] Improved documentation and tutorials
 - [ ] Open resource the post-process code.
 - [ ] Open resource the eval metric code.
 - [ ] Open resource the dataset in huggingface.
