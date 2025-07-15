@@ -2,7 +2,7 @@
 
   <h1 style="font-size: 32px; font-weight: bold;"> Driving by Hybrid Navigation: <br> An Online HD-SD Map Association Framework and Benchmark for Autonomous Vehicles </h1>
 
-  <a href="">
+  <a href="https://arxiv.org/abs/2507.07487">
     <img src="https://img.shields.io/badge/ArXiv-OMA-brown?logo=arxiv" alt="Paper">
   </a>
   <a href="https://huggingface.co/datasets/wanjiaxu/OMA">
