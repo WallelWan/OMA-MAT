@@ -1,6 +1,6 @@
 <div align="center">
 
-  <h1 style="font-size: 32px; font-weight: bold;"> Driving by Hybrid Navigation: <br> An Online HD-SD Map Association Framework and Benchmark for Autonomous Vehicles </h1>
+  <h1 style="font-size: 32px; font-weight: bold;"> [ICLR 2026] Online Navigation Refinement: Achieving Lane-Level Guidance by Associating Standard-Definition and Online Perception Maps </h1>
 
   <a href="https://arxiv.org/abs/2507.07487">
     <img src="https://img.shields.io/badge/ArXiv-OMA-brown?logo=arxiv" alt="Paper">
@@ -47,6 +47,7 @@ Connecting online mapping with hybrid navigation to enable interpretable autonom
 
 ## News
 
+- 2026/01/26: 🎉 Congratulations, OMA-MAT is accepted by ICLR 2026. We will open the dataset and checkpoint as soon as possible.
 - 2025/07/15: First commit.
 
 ## Quick Start
