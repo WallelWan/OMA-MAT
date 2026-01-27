@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMA-MAT: Online Navigation Refinement (ICLR 2026)</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --link-color: #3b82f6;
+            --bg-color: #ffffff;
+            --text-color: #1f2937;
+            --code-bg: #1e1e1e;
+            --gray-bg: #f3f4f6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .conf-badge {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: #1e40af;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .authors {
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+
+        .authors span {
+            margin: 0 0.3rem;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .links a {
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .links a:hover {
+            opacity: 0.8;
+        }
+
+        .links img {
+            height: 28px; /* Control badge size */
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: #111827;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            color: #374151;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Images */
+        .img-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        /* News Box */
+        .news-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .news-item {
+            margin-bottom: 0.5rem;
+        }
+        .news-date {
+            font-weight: bold;
+            color: #15803d;
+            margin-right: 0.5rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #e5e7eb;
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        code {
+            font-family: inherit;
+        }
+
+        /* Citation */
+        .citation {
+            background-color: var(--gray-bg);
+            color: #374151;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            border: 1px solid #d1d5db;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 4rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="conf-badge">ICLR 2026 Accepted</div>
+        <h1>Online Navigation Refinement: Achieving Lane-Level Guidance by Associating Standard-Definition and Online Perception Maps</h1>
+        
+        <div class="authors">
+            <span>Jiaxu Wan</span>, 
+            <span>Xu Wang</span>, 
+            <span>Mengwei Xie</span>, 
+            <span>Xinyuan Chang</span>, 
+            <span>Xinran Liu</span>,<br>
+            <span>Zheng Pan</span>, 
+            <span>Mu Xu</span>, 
+            <span>Ding Yuan</span>
+        </div>
+
+        <div class="links">
+            <a href="https://arxiv.org/abs/2507.07487" target="_blank">
+                <img src="https://img.shields.io/badge/ArXiv-OMA-brown?logo=arxiv" alt="Paper">
+            </a>
+            <a href="https://huggingface.co/datasets/wanjiaxu/OMA" target="_blank">
+                <img src="https://img.shields.io/badge/🤗 huggingface-Dataset-blue" alt="dataset">
+            </a>
+            <a href="https://huggingface.co/wanjiaxu/MAT" target="_blank">
+                <img src="https://img.shields.io/badge/🤗 huggingface-Model-green" alt="checkpoint">
+            </a>
+            <a href="https://github.com/WallelWan/OMA-MAT" target="_blank">
+                <img src="https://img.shields.io/badge/GitHub-Repository-black?logo=github" alt="github">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="img-container">
+                <img src="docs/intro.jpg" alt="OMA-MAT Introduction">
+                <p class="caption">Connecting online mapping with hybrid navigation to enable interpretable autonomous driving.</p>
+            </div>
+            <p style="font-size: 1.1rem; text-align: justify;">
+                This paper introduces a novel framework for Online Navigation Refinement. By associating Standard-Definition (SD) maps with Online Perception maps, we achieve lane-level guidance, bridging the gap between global navigation and local perception.
+            </p>
+        </section>
+
+        <section>
+            <h2>News</h2>
+            <div class="news-box">
+                <div class="news-item">
+                    <span class="news-date">2026/01/26</span>
+                    🎉 Congratulations! <strong>OMA-MAT</strong> is accepted by <strong>ICLR 2026</strong>. Dataset and checkpoints will be released shortly.
+                </div>
+                <div class="news-item">
+                    <span class="news-date">2025/07/15</span>
+                    First commit and initial release.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Key Insights</h2>
+            
+            <h3>1. Online Map Association (OMA) Benchmark</h3>
+            <p>We introduce OMA, the first benchmark dedicated to hybrid navigation-oriented online map association.</p>
+            <div class="img-container">
+                <img src="docs/dataset.jpg" alt="OMA Dataset">
+            </div>
+
+            <h3>2. Association P-R Metric</h3>
+            <p>We introduce Association P-R, a novel metric for map association that strictly considers the accuracy and precision of topological alignment.</p>
+            <div class="img-container">
+                <img src="docs/metric.jpg" alt="Association Metric">
+            </div>
+
+            <h3>3. Map Association Transformer (MAT)</h3>
+            <p>We propose MAT, utilizing path-aware and spatial attention mechanisms to deeply understand geometric and topological correspondences.</p>
+            <div class="img-container">
+                <img src="docs/model.jpg" alt="MAT Model Architecture">
+            </div>
+        </section>
+
+        <section>
+            <h2>Quick Start</h2>
+
+            <h3>Dataset Preparation</h3>
+            <p>Download the OMA dataset using the Huggingface CLI:</p>
+            <pre><code># Note: The dataset is under compliance review and will be opened soon.
+huggingface-cli dataset download wanjiaxu/OMA --local-dir data/oma</code></pre>
+
+            <h3>Training</h3>
+            <pre><code># Recommended: Using Script
+sh scripts/train.sh -p python -d oma -c oma-mt-v1m1-l -n oma-mt-v1m1-l
+
+# Alternative: Direct Command
+export PYTHONPATH=./
+python tools/train.py --config-file configs/oma/oma-mt-v1m1-l.py --options save_path=exp/oma/oma-mt-v1m1-l</code></pre>
+
+            <h3>Testing</h3>
+            <pre><code># Recommended: Using Script
+sh scripts/test.sh -p python -d oma -n oma-mt-v1m1-l -w model_best
+
+# Alternative: Direct Command
+export PYTHONPATH=./
+python tools/test.py --config-file configs/oma/oma-mt-v1m1-l.py --options save_path=exp/oma/oma-mt-v1m1-l weight=exp/oma/oma-mt-v1m1-l/model/model_best.pth</code></pre>
+        </section>
+
+        <section>
+            <h2>Citation</h2>
+            <div class="citation">@article{wan2025driving,
+  title={Driving by Hybrid Navigation: An Online HD-SD Map Association Framework and Benchmark for Autonomous Vehicles},
+  author={Wan, Jiaxu and Wang, Xu and Xie, Mengwei and Chang, Xinyuan and Liu, Xinran and Pan, Zheng and Xu, Mu and Yuan, Ding},
+  journal={arXiv preprint arXiv:2507.07487},
+  year={2025}
+}</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Project released under the <a href="./LICENSE">MIT License</a>.</p>
+        <p>Acknowledgement: <a href="https://github.com/Pointcept/Pointcept">Pointcept</a> & <a href="https://github.com/Visual-Agent/DeepEyes">DeepEyes</a>.</p>
+        <p>&copy; 2026 WallelWan. Hosted on GitHub Pages.</p>
+    </footer>
+</div>
+
+</body>
+</html>
