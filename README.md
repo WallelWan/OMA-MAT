@@ -12,13 +12,13 @@
     <img src="https://img.shields.io/badge/🤗 huggingface-Model-green" alt="checkpoint">
   </a>
   <a href="https://www.modelscope.cn/datasets/WallelWan/OMA">
-    <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/modelscope.svg" height="28" alt="ModelScope Dataset">
+    <img src="https://img.shields.io/badge/ModelScope-Dataset-8A2BE2" alt="ModelScope Dataset">
   </a>
   <a href="https://www.modelscope.cn/models/WallelWan/MAT">
-    <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/modelscope.svg" height="28" alt="ModelScope Model">
+    <img src="https://img.shields.io/badge/ModelScope-Model-8A2BE2" alt="ModelScope Model">
   </a>
-  <a href="https://github.com/WallelWan/OMA-MAT">
-    <img src="https://img.shields.io/badge/-HomePage-black?logo=github" alt="checkpoint">
+  <a href="https://wallelwan.github.io/OMA-MAT/">
+    <img src="https://img.shields.io/badge/-HomePage-black?logo=github" alt="homepage">
   </a>
 </div>
 
