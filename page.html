@@ -221,6 +221,12 @@
             <a href="https://huggingface.co/wanjiaxu/MAT" target="_blank">
                 <img src="https://img.shields.io/badge/🤗 huggingface-Model-green" alt="checkpoint">
             </a>
+            <a href="https://www.modelscope.cn/datasets/WallelWan/OMA" target="_blank">
+                <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/modelscope.svg" height="28" alt="ModelScope Dataset">
+            </a>
+            <a href="https://www.modelscope.cn/models/WallelWan/MAT" target="_blank">
+                <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/modelscope.svg" height="28" alt="ModelScope Model">
+            </a>
             <a href="https://github.com/WallelWan/OMA-MAT" target="_blank">
                 <img src="https://img.shields.io/badge/GitHub-Repository-black?logo=github" alt="github">
             </a>
@@ -230,7 +236,7 @@
     <main>
         <section>
             <div class="img-container">
-                <img src="docs/intro.jpg" alt="OMA-MAT Introduction">
+                <img src="docs/intro.png" alt="OMA-MAT Introduction">
                 <p class="caption">Connecting online mapping with hybrid navigation to enable interpretable autonomous driving.</p>
             </div>
             <p style="font-size: 1.1rem; text-align: justify;">
@@ -242,12 +248,16 @@
             <h2>News</h2>
             <div class="news-box">
                 <div class="news-item">
+                    <span class="news-date">2026/02/27</span>
+                    🚀 Dataset and checkpoint are now available on HuggingFace and ModelScope.
+                </div>
+                <div class="news-item">
                     <span class="news-date">2026/01/26</span>
-                    🎉 Congratulations! <strong>OMA-MAT</strong> is accepted by <strong>ICLR 2026</strong>. Dataset and checkpoints will be released shortly.
+                    🎉 Congratulations, <strong>OMA-MAT</strong> is accepted by <strong>ICLR 2026</strong>. We will open the dataset and checkpoint as soon as possible.
                 </div>
                 <div class="news-item">
                     <span class="news-date">2025/07/15</span>
-                    First commit and initial release.
+                    First commit.
                 </div>
             </div>
         </section>
@@ -258,19 +268,19 @@
             <h3>1. Online Map Association (OMA) Benchmark</h3>
             <p>We introduce OMA, the first benchmark dedicated to hybrid navigation-oriented online map association.</p>
             <div class="img-container">
-                <img src="docs/dataset.jpg" alt="OMA Dataset">
+                <img src="docs/dataset.png" alt="OMA Dataset">
             </div>
 
             <h3>2. Association P-R Metric</h3>
             <p>We introduce Association P-R, a novel metric for map association that strictly considers the accuracy and precision of topological alignment.</p>
             <div class="img-container">
-                <img src="docs/metric.jpg" alt="Association Metric">
+                <img src="docs/metric.png" alt="Association Metric">
             </div>
 
             <h3>3. Map Association Transformer (MAT)</h3>
             <p>We propose MAT, utilizing path-aware and spatial attention mechanisms to deeply understand geometric and topological correspondences.</p>
             <div class="img-container">
-                <img src="docs/model.jpg" alt="MAT Model Architecture">
+                <img src="docs/model.png" alt="MAT Model Architecture">
             </div>
         </section>
 
@@ -279,8 +289,7 @@
 
             <h3>Dataset Preparation</h3>
             <p>Download the OMA dataset using the Huggingface CLI:</p>
-            <pre><code># Note: The dataset is under compliance review and will be opened soon.
-huggingface-cli dataset download wanjiaxu/OMA --local-dir data/oma</code></pre>
+            <pre><code>huggingface-cli download wanjiaxu/OMA --repo-type dataset --local-dir data/oma</code></pre>
 
             <h3>Training</h3>
             <pre><code># Recommended: Using Script
@@ -297,6 +306,57 @@ sh scripts/test.sh -p python -d oma -n oma-mt-v1m1-l -w model_best
 # Alternative: Direct Command
 export PYTHONPATH=./
 python tools/test.py --config-file configs/oma/oma-mt-v1m1-l.py --options save_path=exp/oma/oma-mt-v1m1-l weight=exp/oma/oma-mt-v1m1-l/model/model_best.pth</code></pre>
+
+            <h3>Using Pretrained Checkpoint</h3>
+            <p>To use the pretrained checkpoint from HuggingFace directly:</p>
+            <pre><code># Download the pretrained checkpoint
+huggingface-cli download wanjiaxu/MAT --local-dir checkpoints/MAT
+
+# Run evaluation with the downloaded checkpoint
+export PYTHONPATH=./
+python tools/test.py --config-file configs/oma/oma-mt-v1m1-l.py --options save_path=exp/oma/oma-mt-v1m1-l weight=checkpoints/MAT/model_best.pth</code></pre>
+        </section>
+
+        <section>
+            <h2>Evaluate with Association P-R Metric</h2>
+            <p>After testing, the model outputs prediction JSON files. Run the Association P-R metric evaluation using the scripts in <code>metrics/</code>:</p>
+            <pre><code>cd metrics
+
+# Step 1: Compute per-sample TP/FP/FN statistics
+python metrics.py \
+  --file_dir ../exp/oma/oma-mt-v1m1-l/result \
+  --output_dir ../exp/oma/oma-mt-v1m1-l/metric_result \
+  --gt_dir ../data/oma/val \
+  --distance_threshold 1.0
+
+# Step 2: Aggregate results and print P / R / F1
+python read_and_recal_metric.py \
+  --file_dir ../exp/oma/oma-mt-v1m1-l/metric_result</code></pre>
+        </section>
+
+        <section>
+            <h2>Model and Dataset</h2>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                <thead>
+                    <tr style="background-color: #f3f4f6;">
+                        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">Resource</th>
+                        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">HuggingFace</th>
+                        <th style="padding: 0.75rem; text-align: left; border: 1px solid #e5e7eb;">ModelScope</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">Dataset (OMA)</td>
+                        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;"><a href="https://huggingface.co/datasets/wanjiaxu/OMA">🤗 wanjiaxu/OMA</a></td>
+                        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;"><a href="https://www.modelscope.cn/datasets/WallelWan/OMA">WallelWan/OMA</a></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;">Checkpoint (MAT)</td>
+                        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;"><a href="https://huggingface.co/wanjiaxu/MAT">🤗 wanjiaxu/MAT</a></td>
+                        <td style="padding: 0.75rem; border: 1px solid #e5e7eb;"><a href="https://www.modelscope.cn/models/WallelWan/MAT">WallelWan/MAT</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <section>
