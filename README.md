@@ -150,10 +150,11 @@ The Readme is inspired by [DeepEyes](https://github.com/Visual-Agent/DeepEyes).
 ## Citation
 
 ```
-@article{wan2025driving,
-  title={Driving by Hybrid Navigation: An Online HD-SD Map Association Framework and Benchmark for Autonomous Vehicles},
-  author={Wan, Jiaxu and Wang, Xu and Xie, Mengwei and Chang, Xinyuan and Liu, Xinran and Pan, Zheng and Xu, Mu and Yuan, Ding},
+@article{wan2025online,
+  title={Online Navigation Refinement: Achieving Lane-Level Guidance by Associating Standard-Definition and Online Perception Maps},
+  author={Wan, Jiaxu and Wang, Xu and Xie, Mengwei and Chang, Xinyuan and Liu, Xinran and Pan, Zheng and Xu, Mu and Zhang, Hong and Yuan, Ding and Yang, Yifan},
   journal={arXiv preprint arXiv:2507.07487},
   year={2025}
+}
 }
 ```
